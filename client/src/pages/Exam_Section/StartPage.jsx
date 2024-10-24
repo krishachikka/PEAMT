@@ -16,14 +16,21 @@ function StartPage() {
             alert('Please enter a valid 6-digit code.');
             return;
         }
-
+    
         try {
             const response = await axios.post('http://localhost:3000/api/exams/verify-code', {
                 examName,
                 enteredCode: code,
             });
+    
             if (response.data.valid) {
-                navigate('/exam-window', { state: { examName, duration } }); // Pass examName and duration to ExamWindow
+                navigate('/exam-window', { 
+                    state: { 
+                        examName, 
+                        duration, 
+                        uploadedImage // Pass the uploaded image to the next page
+                    } 
+                });
             } else {
                 setError('Invalid secure code. Please try again.');
             }
@@ -32,6 +39,7 @@ function StartPage() {
             setError('Failed to validate secure code. Please try again later.');
         }
     };
+    
 
     // Handle image upload
     const handleImageUpload = (event) => {

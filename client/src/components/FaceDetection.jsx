@@ -17,7 +17,7 @@ const FaceDetection = () => {
                 faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
                 faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
             ]);
-            setMessage("Models loaded successfully. Starting video...");
+            setMessage("Models loaded successfully. Starting video");
             startVideo();
         } catch (error) {
             console.error("Error loading models:", error);
