@@ -1,178 +1,166 @@
-# PEAMT - Proctored Exam Automation and Monitoring Tool
+<div align="center">
 
-A comprehensive full-stack application built with the MERN stack (MongoDB, Express, React, Node.js) designed for proctored exam automation and monitoring. The project leverages Firebase for authentication and data storage, ensuring a robust and secure system.
+# 🎓 Scorezy – Proctored Exam Automation & Monitoring Tool
 
-## Table of Contents
+**A smart, secure, and scalable MERN-based solution for seamless online exam proctoring, built with Firebase & React.**
 
-- [Frontend](#frontend)
-- [Backend](#backend)
-- [Environment Variables](#environment-variables)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [API Documentation](#api-documentation)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+</div>
 
 ---
 
-## Frontend
+## 📌 Overview
 
-The frontend is developed using React and Vite, providing a responsive and interactive user interface. It integrates with Firebase for authentication and data management.
+**Scorezy** is a robust full-stack web application designed to automate and monitor online exams in real-time. Built with the **MERN stack** and integrated with **Firebase Authentication**, it provides a secure environment for candidates and a dynamic admin interface for invigilators. Scorezy supports live monitoring, dashboard control, authentication, and result tracking—making it ideal for universities, hiring platforms, and training centers.
 
-### Setup
+---
 
-1. **Clone the repository:**
+## ⚙️ Features
+
+### 👩‍🎓 For Students
+
+* Secure **Firebase-based login**
+* Take exams in a **proctored, monitored** environment
+* User-friendly, **responsive UI**
+* Get real-time status updates
+
+### 🧑‍💼 For Admins
+
+* Dashboard with **user management** and **submission logs**
+* Set exam access via private dashboard credentials
+* View student sessions and activity in real-time
+
+### 🔐 Security & Monitoring
+
+* Firebase Authentication for secure sign-ins
+* JWT-protected backend routes
+* Exam session control using dashboard access keys
+
+---
+
+## 🔧 Tech Stack
+
+| Layer      | Tech                          |
+| ---------- | ----------------------------- |
+| Frontend   | React.js, Redux Toolkit, Vite |
+| Backend    | Node.js, Express.js           |
+| Database   | MongoDB                       |
+| Auth       | Firebase Authentication       |
+| State Mgmt | Redux Toolkit + Redux Persist |
+| Others     | Axios, dotenv, bcryptjs, JWT  |
+
+---
+
+## 🚀 Installation Guide
+
+### 📁 Frontend Setup
+
+1. Clone the repo:
 
    ```bash
    git clone https://github.com/yourusername/peamt.git
-   ```
-
-2. **Navigate to the frontend directory:**
-
-   ```bash
    cd peamt/client
    ```
 
-3. **Install dependencies:**
+2. Install dependencies:
 
    ```bash
-   npm install @reduxjs/toolkit firebase react react-dom react-dotenv react-redux react-router-dom redux-persist
+   npm install
    ```
 
-4. **Create a `.env` file in the `client` directory and add your environment variables:**
+3. Create a `.env` file in `client/`:
 
-   ```plaintext
-   VITE_FIREBASE_API_KEY=your_firebase_api_key
-   VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
-   VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
-   VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
-   VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
-   VITE_FIREBASE_APP_ID=your_firebase_app_id
-   VITE_PRIVATE_DASHBOARD_ID=your_private_dashboard_id
-   VITE_DASHBOARD_PASSWORD=your_dashboard_password
+   ```env
+   VITE_FIREBASE_API_KEY=your_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+   VITE_FIREBASE_PROJECT_ID=your_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+   VITE_FIREBASE_MESSAGING_SENDER_ID=sender_id
+   VITE_FIREBASE_APP_ID=app_id
+   VITE_PRIVATE_DASHBOARD_ID=your_dashboard_id
+   VITE_DASHBOARD_PASSWORD=dashboard_password
    ```
 
-5. **Start the development server:**
+4. Run the development server:
 
    ```bash
    npm run dev
    ```
 
-### Usage
-
-Visit `http://localhost:5173` in your browser to access the application. Ensure the backend server is running for a fully functional experience.
-
 ---
 
-## Backend
+### 🖥️ Backend Setup
 
-The backend is constructed with Node.js and Express, offering a RESTful API, authentication, and data management capabilities.
-
-### Setup
-
-1. **Navigate to the root directory:**
+1. From the root project folder:
 
    ```bash
    cd peamt
    ```
 
-2. **Install dependencies:**
+2. Install backend dependencies:
 
    ```bash
-   npm install @reduxjs/toolkit axios bcryptjs body-parser cookie-parser cors dotenv express jsonwebtoken lenis mongoose nodemon react-redux three
+   npm install
    ```
 
-3. **Create a `.env` file in the root directory and add your environment variables:**
+3. Create a `.env` file in the root:
 
-   ```plaintext
+   ```env
    MONGO=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret
    ADMIN=your_admin_mongodb_connection_string
    ```
 
-4. **Start the development server:**
+4. Start the backend server:
 
    ```bash
    npm run dev
    ```
 
-### Usage
+---
 
-The backend server will be available at `http://localhost:3000` by default. Ensure that it is running to allow communication with the frontend.
+## 📄 API Documentation
+
+A complete API documentation will be published soon. It will include:
+
+* Endpoints for auth, user, and exam management
+* Sample request and response formats
+* Protected routes and token handling
 
 ---
 
-## Environment Variables
+## 📝 Additional Tools
 
-Ensure the following environment variables are set up correctly:
+* `jspdf`: Generate and download exam results or reports as PDFs
 
-- **Frontend (.env file):**
+  ```bash
+  npm install jspdf
+  ```
 
-  - `VITE_FIREBASE_API_KEY`: Firebase API key
-  - `VITE_FIREBASE_AUTH_DOMAIN`: Firebase authentication domain
-  - `VITE_FIREBASE_PROJECT_ID`: Firebase project ID
-  - `VITE_FIREBASE_STORAGE_BUCKET`: Firebase storage bucket
-  - `VITE_FIREBASE_MESSAGING_SENDER_ID`: Firebase messaging sender ID
-  - `VITE_FIREBASE_APP_ID`: Firebase app ID
-  - `VITE_PRIVATE_DASHBOARD_ID`: Private dashboard ID for access control
-  - `VITE_DASHBOARD_PASSWORD`: Password for accessing the private dashboard
+---
 
-- **Backend (.env file):**
-  - `MONGO`: MongoDB connection string
-  - `JWT_SECRET`: Secret key for JSON Web Token (JWT) authentication
-  - `ADMIN`: Admin MongoDB connection string for administrative tasks
+## 🤝 Contributing
 
-## Features
+We welcome contributions!
+To contribute:
 
-### Frontend
+1. Fork the repo
+2. Create your feature branch:
+   `git checkout -b feature/your-feature`
+3. Commit changes:
+   `git commit -m 'Add feature'`
+4. Push branch:
+   `git push origin feature/your-feature`
+5. Open a Pull Request 🙌
 
-- **User Authentication:** Secure login and registration using Firebase.
-- **Responsive Design:** Adaptive layout built with React and TailwindCSS.
-- **State Management:** Efficient state management using Redux Toolkit and Redux Persist.
-- **Routing:** Dynamic routing with React Router DOM for seamless navigation.
+---
 
-### Backend
+## 📜 License
 
-- **API Development:** RESTful API endpoints created with Express.
-- **Authentication:** Secure authentication with JWT to protect sensitive routes.
-- **Data Management:** Storage and retrieval of exam data using MongoDB.
-- **Middleware Integration:** Utilizes middleware for body parsing, cookie handling, and Cross-Origin Resource Sharing (CORS).
+Licensed under the **ISC License**. See the [LICENSE](LICENSE) file for more.
 
-## API Documentation
+---
 
-For comprehensive API documentation, including endpoints, request formats, and response examples, please refer to [API Documentation](#). This will help you understand how to interact with the backend services.
+## 📬 Contact
 
-## Contributing
-
-Contributions are welcome! To contribute:
-
-1. **Fork the repository** to create your own copy.
-2. **Create a new branch** for your feature or fix:
-   ```bash
-   git checkout -b feature/your-feature
-   ```
-3. **Make your changes** and ensure they adhere to the project’s coding standards.
-4. **Commit your changes** with a descriptive message:
-   ```bash
-   git commit -am 'Add new feature or fix'
-   ```
-5. **Push to your branch:**
-   ```bash
-   git push origin feature/your-feature
-   ```
-6. **Open a Pull Request** on GitHub to propose your changes.
-
-## License
-
-This project is licensed under the ISC License. For detailed information, refer to the [LICENSE](LICENSE) file.
-
-## Contact
-
-For questions or further information, contact the project maintainer via GitHub or the project's support channels. Your feedback and inquiries are highly valued.
-
-
-
-
-npm install jspdf
+For queries or support, feel free to reach out:
+📧 **[chikkakrisha@gmail.com](mailto:chikkakrisha@gmail.com)**
