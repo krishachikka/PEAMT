@@ -12,7 +12,7 @@ function Result() {
     useEffect(() => {
         const fetchResults = async () => {
             try {
-                const response = await fetch(`/api/results?userEmail=${encodeURIComponent(currentUser.email)}`); // Change to userEmail
+                const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/results?userEmail=${encodeURIComponent(currentUser.email)}`); // Change to userEmail
                 if (!response.ok) {
                     throw new Error('Failed to fetch results');
                 }

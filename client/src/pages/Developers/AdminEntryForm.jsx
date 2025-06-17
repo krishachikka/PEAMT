@@ -31,7 +31,7 @@ function AdminEntryForm() {
         }
 
         try {
-            const response = await fetch('/api/form/submit-form', {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/form/submit-form`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

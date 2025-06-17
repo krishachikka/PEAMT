@@ -31,7 +31,7 @@ function ExamBuilder() {
       setLoading(true);
       setError('');
       try {
-        const response = await axios.get('/api/exams');
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/exams`);
         const exams = response.data;
         const adminExams = exams.filter(exam => exam.adminEmail === adminEmail);
         setExamOptions(adminExams);
@@ -53,7 +53,7 @@ function ExamBuilder() {
         setLoading(true);
         setError('');
         try {
-          const response = await axios.get('/api/examQuestions', { params: { examName } });
+          const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/examQuestions`, { params: { examName } });
           const existingQuestions = response.data.questions || [];
           setQuestions(existingQuestions);
         } catch (error) {
@@ -67,7 +67,7 @@ function ExamBuilder() {
       const fetchSubjectsForExam = async () => {
         setLoading(true);
         try {
-          const response = await axios.get('/api/exams/subjects', { params: { examName } });
+          const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/exams/subjects`, { params: { examName } });
           setSubjects(response.data);
         } catch (error) {
           console.error('Error fetching subjects:', error);
@@ -110,7 +110,7 @@ function ExamBuilder() {
       // Clear the stored data after using it
       localStorage.removeItem('convertedExamQuestions');
     }
-  }, []); 
+  }, []);
 
   const handleExamNameChange = (event) => {
     setExamName(event.target.value);
@@ -202,7 +202,7 @@ function ExamBuilder() {
         questions,
         adminEmail,
       };
-      const response = await axios.post('/api/examQuestions', data);
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/examQuestions`, data);
       if (response.status === 200 || response.status === 201) {
         alert('Exam questions submitted successfully');
         // Navigate back to the specific exam route after submission

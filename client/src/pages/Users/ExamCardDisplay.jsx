@@ -24,7 +24,7 @@ const ExamCardDisplay = ({ exams }) => {
             if (!currentUser?.username) return;
             setLoading(true);
             try {
-                const response = await fetch(`/api/regform/username/${currentUser.username}/exams`);
+                const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/regform/username/${currentUser.username}/exams`);
                 if (!response.ok) throw new Error('Failed to fetch applied exams');
                 const data = await response.json();
                 setAppliedExams(data.examNames || []);

@@ -18,7 +18,7 @@ function StartPage() {
         }
     
         try {
-            const response = await axios.post('http://localhost:3000/api/exams/verify-code', {
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/exams/verify-code`, {
                 examName,
                 enteredCode: code,
             });
@@ -98,33 +98,33 @@ function StartPage() {
                     />
                 </div>
                 <section className='flex flex-row h-40 mx-auto justify-center'>
-                <div
-                    onDrop={handleDrop}
-                    onDragOver={handleDragOver}
-                    className="p-4 w-1/3 m-2 my-auto border-2 border-dashed border-gray-500 cursor-pointer rounded-3xl bg-slate-200 text-center"
-                    onClick={triggerFileInput}
-                >
-                    <input
-                        id="fileInput"
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageUpload}
-                        style={{ display: 'none' }}
-                    />
-                    <p className='text-center text-slate-500'><ion-icon name="cloud-upload" size="large"></ion-icon></p>
-                    <p className='text-center'>{uploadedImage ? "Image Uploaded" : "Drag & Drop or Click to Upload"}</p>
-                </div>
-
-                {uploadedImage && (
-                    <div className="flex flex-col mt-2 items-center">
-                        <img
-                            src={uploadedImage}
-                            alt="Uploaded"
-                            className="border w-28 border-gray-300"
-                            // style={{ width: '200px', height: 'auto' }}
+                    <div
+                        onDrop={handleDrop}
+                        onDragOver={handleDragOver}
+                        className="p-4 w-1/3 m-2 my-auto border-2 border-dashed border-gray-500 cursor-pointer rounded-3xl bg-slate-200 text-center"
+                        onClick={triggerFileInput}
+                    >
+                        <input
+                            id="fileInput"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageUpload}
+                            style={{ display: 'none' }}
                         />
+                        <p className='text-center text-slate-500'><ion-icon name="cloud-upload" size="large"></ion-icon></p>
+                        <p className='text-center'>{uploadedImage ? "Image Uploaded" : "Drag & Drop or Click to Upload"}</p>
                     </div>
-                )}
+
+                    {uploadedImage && (
+                        <div className="flex flex-col mt-2 items-center">
+                            <img
+                                src={uploadedImage}
+                                alt="Uploaded"
+                                className="border w-28 border-gray-300"
+                            // style={{ width: '200px', height: 'auto' }}
+                            />
+                        </div>
+                    )}
                 </section>
 
                 <p className="text-md bg-green-200 p-2 rounded-2xl border-2 text-green-900 mb-4 font-bold">

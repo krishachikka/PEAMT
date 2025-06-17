@@ -30,7 +30,7 @@ function AdminDashboard() {
 
     const fetchExams = async () => {
         try {
-            const response = await fetch('/api/exams', {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/exams`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -48,7 +48,7 @@ function AdminDashboard() {
 
     const fetchRemainingExams = async () => {
         try {
-            const response = await fetch('/api/exams', {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/exams`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -106,7 +106,7 @@ function AdminDashboard() {
         }
 
         try {
-            const response = await fetch('/api/exams', {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/exams`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -169,12 +169,12 @@ function AdminDashboard() {
 
     return (
         <div className="admin-dashboard bg-sky-800 flex flex-col items-center justify-start h-screen p-4 overflow-x-hidden"
-            // style={{
-            //     backgroundImage: 'url("https://i.pinimg.com/236x/b5/69/85/b5698579540881089e74f9e994ba8885.jpg")',
-            //     backgroundSize: 'cover',
-            //     backgroundPosition: 'center',
-            //     paddingTop: '1rem' // Adjusted to reduce top space
-            // }}
+        // style={{
+        //     backgroundImage: 'url("https://i.pinimg.com/236x/b5/69/85/b5698579540881089e74f9e994ba8885.jpg")',
+        //     backgroundSize: 'cover',
+        //     backgroundPosition: 'center',
+        //     paddingTop: '1rem' // Adjusted to reduce top space
+        // }}
         >
             <div className="mb-4">
                 <p className="text-lg font-semibold text-white">Remaining exams this month: {remainingExams}</p>

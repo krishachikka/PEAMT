@@ -11,7 +11,7 @@ function UserDashboard() {
     useEffect(() => {
         const fetchExams = async () => {
             try {
-                const response = await fetch('/api/exams'); // Adjust the endpoint as needed
+                const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/exams`); // Adjust the endpoint as needed
                 if (response.ok) {
                     const data = await response.json();
                     // Assuming data contains both applied and not applied exams

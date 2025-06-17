@@ -1,7 +1,7 @@
 {
   "name": "peamt",
   "version": "1.0.0",
-  "proxy": "http://localhost:3000",
+  "proxy": "https://peamt.onrender.com",
   "description": "",
   "type": "module",
   "main": "index.js",

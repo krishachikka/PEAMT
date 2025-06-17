@@ -17,7 +17,7 @@ function MyExams() {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch(`/api/regform/username/${currentUser.username}/exams/details`);
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/regform/username/${currentUser.username}/exams/details`);
             if (!response.ok) {
                 throw new Error(`Error ${response.status}: Failed to fetch exam details`);
             }

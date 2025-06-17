@@ -17,7 +17,7 @@ function PrivateDashboard() {
     useEffect(() => {
         const fetchAdmins = async () => {
             try {
-                const response = await axios.get('/api/form/admins');
+                const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/form/admins`);
                 setAdmins(response.data.data);
             } catch (error) {
                 console.error('Error fetching admins:', error);
@@ -39,7 +39,7 @@ function PrivateDashboard() {
 
         setIsDeleting(true);
         try {
-            await axios.delete(`/api/form/admins/${id}`);
+            await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/form/admins/${id}`);
             setAdmins(admins.filter(admin => admin._id !== id));
             setPassword('');
             setPasswordError(false);

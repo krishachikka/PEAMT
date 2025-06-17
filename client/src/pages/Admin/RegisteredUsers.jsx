@@ -24,7 +24,7 @@ function RegisteredUsers() {
 
     const fetchUsers = async (examNameToFetch) => {
         try {
-            const response = await fetch(`/api/regform/usernames/exam/${examNameToFetch}`);
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/regform/usernames/exam/${examNameToFetch}`);
             if (!response.ok) {
                 throw new Error('Users not found');
             }
@@ -50,7 +50,7 @@ function RegisteredUsers() {
 
     const fetchResults = async (userEmail) => {
         try {
-            const response = await fetch(`/api/results?userEmail=${encodeURIComponent(userEmail)}`);
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/results?userEmail=${encodeURIComponent(userEmail)}`);
             if (!response.ok) {
                 throw new Error('Results not found');
             }
@@ -85,7 +85,7 @@ function RegisteredUsers() {
 
     const shareScores = async () => {
         try {
-            const response = await fetch('/api/share-scores', {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/share-scores`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

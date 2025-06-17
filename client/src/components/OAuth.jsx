@@ -14,7 +14,7 @@ export default function OAuth() {
             const auth = getAuth(app);
 
             const result = await signInWithPopup(auth, provider);
-            const res = await fetch('/api/auth/google', {
+            const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/auth/google`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export default function OAuth() {
             onClick={handleGoogleClick}
             className='googleBtn bg-sky-500 text-white rounded-3xl p-3 uppercase'
         >
-            <img src={google} style={{width: '18px' , padding: '2px'}}></img>
+            <img src={google} style={{ width: '18px', padding: '2px' }}></img>
             Continue with google
         </button>
     );

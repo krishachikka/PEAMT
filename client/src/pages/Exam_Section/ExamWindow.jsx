@@ -43,7 +43,7 @@ function ExamWindow() {
 
         const fetchData = async () => {
             try {
-                const response = await fetch(`/api/examQuestions?examName=${encodeURIComponent(examName)}`, {
+                const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/examQuestions?examName=${encodeURIComponent(examName)}`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${currentUser.token}`,
@@ -267,7 +267,7 @@ function ExamWindow() {
         };
 
         try {
-            const response = await fetch('http://localhost:3000/api/submitResult', {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL / api / submitResult}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -331,7 +331,7 @@ function ExamWindow() {
                 </div>
             )}
             <FaceDetection />
-            
+
             <div className="w-1/6 p-2 bg-gray-100 rounded-lg" style={{ height: '100%', overflowY: 'auto' }}>
 
                 <div className="bg-cyan-200/50 p-4 rounded-lg shadow-md h-full">
@@ -357,36 +357,36 @@ function ExamWindow() {
                     {currentQuestions.length > 0 && (
                         <>
                             <section>
-                            <p className="mt-2 mb-4">{currentQuestions[selectedQuestionIndex].text}</p>
-                            <div className="flex flex-col space-y-2">
-                                {currentQuestions[selectedQuestionIndex].options &&
-                                    (currentQuestions[selectedQuestionIndex].options.length === 0 ||
-                                        currentQuestions[selectedQuestionIndex].options.every(option => option === "")) ? (
-                                    <textarea
-                                        value={theoryAnswer}
-                                        onChange={(e) => handleTheoryChange(e.target.value)}
-                                        placeholder="Type your answer here..."
-                                        className="border p-2 rounded-lg w-full h-32 resize-none"
-                                        style={{ overflow: 'hidden' }}
-                                        onFocus={(e) => e.target.select()}
-                                        rows={1}
-                                        onInput={(e) => e.target.style.height = e.target.scrollHeight + 'px'}
-                                    />
-                                ) : (
-                                    currentQuestions[selectedQuestionIndex].options.map((option, optionIndex) => (
-                                        <label key={optionIndex} className="flex items-center space-x-2">
-                                            <input
-                                                type="radio"
-                                                value={option}
-                                                checked={selectedOption === option}
-                                                onChange={() => handleOptionChange(option)}
-                                                className="form-radio"
-                                            />
-                                            <span>{option}</span>
-                                        </label>
-                                    ))
-                                )}
-                            </div>
+                                <p className="mt-2 mb-4">{currentQuestions[selectedQuestionIndex].text}</p>
+                                <div className="flex flex-col space-y-2">
+                                    {currentQuestions[selectedQuestionIndex].options &&
+                                        (currentQuestions[selectedQuestionIndex].options.length === 0 ||
+                                            currentQuestions[selectedQuestionIndex].options.every(option => option === "")) ? (
+                                        <textarea
+                                            value={theoryAnswer}
+                                            onChange={(e) => handleTheoryChange(e.target.value)}
+                                            placeholder="Type your answer here..."
+                                            className="border p-2 rounded-lg w-full h-32 resize-none"
+                                            style={{ overflow: 'hidden' }}
+                                            onFocus={(e) => e.target.select()}
+                                            rows={1}
+                                            onInput={(e) => e.target.style.height = e.target.scrollHeight + 'px'}
+                                        />
+                                    ) : (
+                                        currentQuestions[selectedQuestionIndex].options.map((option, optionIndex) => (
+                                            <label key={optionIndex} className="flex items-center space-x-2">
+                                                <input
+                                                    type="radio"
+                                                    value={option}
+                                                    checked={selectedOption === option}
+                                                    onChange={() => handleOptionChange(option)}
+                                                    className="form-radio"
+                                                />
+                                                <span>{option}</span>
+                                            </label>
+                                        ))
+                                    )}
+                                </div>
                             </section>
                             <div className="flex justify-between mt-4">
                                 <button

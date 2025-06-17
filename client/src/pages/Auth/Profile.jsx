@@ -95,7 +95,7 @@ export default function Profile() {
             try {
                 dispatch(updateUserStart());
                 const updateData = isAdmin ? { profilePicture: formData.profilePicture } : formData;
-                const res = await fetch(`/api/user/update/${currentUser._id}`, {
+                const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/update/${currentUser._id}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ export default function Profile() {
         if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
             try {
                 dispatch(deleteUserStart());
-                const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+                const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/delete/${currentUser._id}`, {
                     method: 'DELETE',
                 });
                 const data = await res.json();
@@ -137,7 +137,7 @@ export default function Profile() {
     const handleSignOut = async () => {
         if (window.confirm('Are you sure you want to sign out?')) {
             try {
-                await fetch('/api/auth/signout');
+                await fetch(`${import.meta.env.VITE_BASE_URL}/api/auth/signout`);
                 dispatch(signOut());
             } catch (error) {
                 console.log(error);

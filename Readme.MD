@@ -100,7 +100,7 @@ The backend is constructed with Node.js and Express, offering a RESTful API, aut
 
 ### Usage
 
-The backend server will be available at `http://localhost:3000` by default. Ensure that it is running to allow communication with the frontend.
+The backend server will be available at `import.meta.env.VITE_BASE_URL` by default. Ensure that it is running to allow communication with the frontend.
 
 ---
 
@@ -171,8 +171,5 @@ This project is licensed under the ISC License. For detailed information, refer 
 ## Contact
 
 For questions or further information, contact the project maintainer via GitHub or the project's support channels. Your feedback and inquiries are highly valued.
-
-
-
 
 npm install jspdf
